@@ -9,10 +9,10 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class Utils {
+  public class Utils {
 
 
-public static String csvToString(String path){
+  public static String csvToString(String path){
 
         Path filePath = Path.of(path);
         StringBuilder contentBuilder = new StringBuilder();
@@ -42,8 +42,7 @@ public static String csvToString(String path){
 
     }
 
-
-  public static Set<Partido> getPartidos(String resultadoRondas){
+    public static Set<Partido> getPartidos(String resultadoRondas){
 
       Set<Partido> partidos = new HashSet<>();
 
@@ -53,18 +52,12 @@ public static String csvToString(String path){
       for (int i = 1; i < formated.length; i++) {
           String[] reFormated = formated[i].split(",");
 
-          partidos.add(new Partido(new Equipo("Argentina", reFormated[1]),new Equipo("Argentina", reFormated[4]),Integer.valueOf(reFormated[2]),Integer.valueOf(reFormated[3])));
+          partidos.add(new Partido(new Equipo(reFormated[1]),new Equipo(reFormated[4]),Integer.valueOf(reFormated[2]),Integer.valueOf(reFormated[3])));
 
       }
 
-
       return partidos;
-
   }
-
-
-
-
 
   public static Set<Persona> getPronosticos(String resultadoPronosticos) {
 
@@ -75,13 +68,10 @@ public static String csvToString(String path){
 
       for (int i = 1; i < formated.length; i++) {
           String[] reFormated = formated[i].split(",");
-         Apuesta apuesta = new Apuesta(new Equipo("Argentina", reFormated[1]),new Equipo("Argentina", reFormated[5]),siHayX(reFormated[2]),siHayX(reFormated[4]),siHayX(reFormated[3]));
+         Apuesta apuesta = new Apuesta(new Equipo(reFormated[1]),new Equipo(reFormated[5]),siHayX(reFormated[2]),siHayX(reFormated[4]),siHayX(reFormated[3]));
          apostadores.add(new Persona(reFormated[0],apuesta));
 
       }
-
-
-
 
       return apostadores;
   }
@@ -106,20 +96,11 @@ public static String csvToString(String path){
 
             }
 
-
-
-
         }
 
     }
-
-
-
-
-
     return personas;
   }*/
-
 
     public static Persona contarPuntos(Set<Partido> partidos , Persona persona){
         Persona persona1 = new Persona(persona.getNombre());
@@ -145,26 +126,7 @@ public static String csvToString(String path){
             personas1.add(contarPuntos(partidos,persona));
         });
 
-
-
          personas1.stream().sorted(Comparator.comparing(Persona::getNombre)).forEach(System.out::println);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
 

@@ -7,7 +7,7 @@ public class Equipo {
     public Equipo(){}
 
 
-    public Equipo(String argentina, String nombre) {
+    public Equipo(String nombre) {
         this.nombre = nombre;
     }
 
